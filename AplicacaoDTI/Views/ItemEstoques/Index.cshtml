@@ -1,0 +1,36 @@
+﻿@model IEnumerable<AplicacaoDTI.Models.ItemEstoque>
+
+@{
+    ViewData["Title"] = "Estoque";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Produto</th>
+            <th>Loja</th>
+            <th>Quantidade</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@item.Produto.Nome</td>
+        <td>@item.Loja.Nome</td>
+        <td>@item.Quantidade</td>
+        <td>
+                    @Html.ActionLink("Edit", "Edit", new { idProduto = item.IdProduto, idLoja = item.IdLoja }) |
+                    @Html.ActionLink("Details", "Details", new { idProduto = item.IdProduto, idLoja = item.IdLoja }) |
+            @Html.ActionLink("Delete", "Delete", new { idProduto = item.IdProduto, idLoja = item.IdLoja })
+        </td>
+    </tr>
+}
+    </tbody>
+</table>
